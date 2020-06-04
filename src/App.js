@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react'
+import routes from './routes'
+import { Header, AuthHeader } from './Components/Header/Header'
+import { connect } from 'react-redux'
+import { getUser } from './redux/reducers/sessionReducer'
 import './reset.css'
 import './App.css'
 
-function App() {
-  return <div className='App'></div>
+class App extends Component {
+  constructor() {
+    super()
+  }
+
+  componentDidMount() {
+    this.props.getUser()
+  }
+
+  render() {
+    const { isLoggedIn } = this.props.session
+    return (
+      <main className='App'>
+        {isLoggedIn ? <Header /> : <AuthHeader />}
+        <div className='routes'>{routes}</div>
+      </main>
+    )
+  }
 }
 
-export default App
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, { getUser })(App)
