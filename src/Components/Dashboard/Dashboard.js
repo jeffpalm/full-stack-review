@@ -21,13 +21,17 @@ class Dashboard extends Component {
       .catch(() => this.props.history.push('/'))
   }
 
+  
+
   render() {
     const { mounted } = this.state
     return (
       <div>
-        {mounted ? 
-        <PostContainer />
-        : null}
+        {mounted ? (
+          <div className='dashboard'>
+            <PostContainer />
+          </div>
+        ) : null}
       </div>
     )
   }

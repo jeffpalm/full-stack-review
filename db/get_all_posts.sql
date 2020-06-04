@@ -6,4 +6,6 @@ SELECT
   p.created_at
 FROM
   posts p
-  JOIN users u ON p.user_id = u.user_id;
+  JOIN users u ON p.user_id = u.user_id
+ORDER BY
+  p.created_at DESC;

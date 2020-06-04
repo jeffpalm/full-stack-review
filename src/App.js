@@ -7,10 +7,6 @@ import './reset.css'
 import './App.css'
 
 class App extends Component {
-  constructor() {
-    super()
-  }
-
   componentDidMount() {
     this.props.getUser()
   }
